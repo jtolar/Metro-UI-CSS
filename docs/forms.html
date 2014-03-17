@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="product" content="Metro UI CSS Framework">
     <meta name="description" content="Simple responsive css framework">
     <meta name="author" content="Sergey S. Pimenov, Ukraine, Kiev">
 
     <link href="css/metro-bootstrap.css" rel="stylesheet">
     <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/iconFont.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/prettify/prettify.css" rel="stylesheet">
 
@@ -17,8 +19,9 @@
     <script src="js/jquery/jquery.mousewheel.js"></script>
     <script src="js/prettify/prettify.js"></script>
 
-    <!-- Local JavaScript -->
-    <script src="js/metro/metro-loader.js"></script>
+    <!-- Metro UI CSS JavaScript plugins -->
+    <script src="js/load-metro.js"></script>
+
     <!-- Local JavaScript -->
     <script src="js/docs.js"></script>
     <script src="js/github.info.js"></script>
@@ -27,9 +30,7 @@
 </head>
 <body class="metro">
     <header class="bg-dark" data-load="header.html"></header>
-    <div class="page">
-        <div class="page-region">
-            <div class="page-region-content">
+    <div class="container">
                 <h1>
                     <a href="/"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
                     Forms<small class="on-right">definition</small>
@@ -37,7 +38,7 @@
 
                 <div class="grid">
                     <div class="row">
-                        <div class="span3">
+                        <div class="span3 no-tablet-portrait">
                             <nav>
                                 <ul class="side-menu">
                                     <li><a href="#_checkbox">Checkboxes</a></li>
@@ -62,12 +63,12 @@
                                 <form>
                                     <fieldset>
                                         <legend>Legend</legend>
-                                        <lable>Label name</lable>
+                                        <label>Label name</label>
                                         <div class="input-control text" data-role="input-control">
                                             <input type="text" placeholder="type text">
                                             <button class="btn-clear" tabindex="-1"></button>
                                         </div>
-                                        <lable>Label name</lable>
+                                        <label>Label name</label>
                                         <div class="input-control password" data-role="input-control">
                                             <input type="password" placeholder="type password" autofocus>
                                             <button class="btn-reveal" tabindex="-1"></button>
@@ -395,55 +396,55 @@
 &lt;/div&gt;
 </pre>
 
-                            <h3>Input with spanN class</h3>
+                            <h3>Input with sizeN class</h3>
                             <p class="description">
-                                Use <code>.span1</code> to <code>.span12</code> for <code>.input-control</code> that match the same sizes of the grid columns.
+                                Use <code>.size1</code> to <code>.size12</code> for <code>.input-control</code> that match the same sizes of the grid columns.
                             </p>
                             <div class="example">
                                 <form class="clearfix">
                                     <h4>As block</h4>
-                                    <div class="input-control text span1 block" data-role="input-control">
-                                        <input type="text" placeholder="span1">
+                                    <div class="input-control text size1 block" data-role="input-control">
+                                        <input type="text" placeholder="size1">
                                     </div>
-                                    <div class="input-control text span2 block" data-role="input-control">
-                                        <input type="text" placeholder="span2">
+                                    <div class="input-control text size2 block" data-role="input-control">
+                                        <input type="text" placeholder="size2">
                                     </div>
-                                    <div class="input-control text span3 block" data-role="input-control">
-                                        <input type="text" placeholder="span3">
+                                    <div class="input-control text size3 block" data-role="input-control">
+                                        <input type="text" placeholder="size3">
                                     </div>
-                                    <div class="input-control text span4 block" data-role="input-control">
-                                        <input type="text" placeholder="span3">
+                                    <div class="input-control text size4 block" data-role="input-control">
+                                        <input type="text" placeholder="size3">
                                     </div>
 
                                     <h4>As inline-block</h4>
-                                    <div class="input-control text span1" data-role="input-control">
-                                        <input type="text" placeholder="span1">
+                                    <div class="input-control text size1" data-role="input-control">
+                                        <input type="text" placeholder="size1">
                                     </div>
-                                    <div class="input-control text span2" data-role="input-control">
-                                        <input type="text" placeholder="span2">
+                                    <div class="input-control text size2" data-role="input-control">
+                                        <input type="text" placeholder="size2">
                                     </div>
-                                    <div class="input-control text span3" data-role="input-control">
-                                        <input type="text" placeholder="span3">
+                                    <div class="input-control text size3" data-role="input-control">
+                                        <input type="text" placeholder="size3">
                                     </div>
                                 </form>
 
-                                <form>
+                                <form class="no-display">
                                     <h4>In grid</h4>
                                     <div class="grid">
                                         <div class="row">
                                             <div class="span2">
-                                                <div class="input-control text span2" data-role="input-control">
-                                                    <input type="text" placeholder="span2">
+                                                <div class="input-control text size2" data-role="input-control">
+                                                    <input type="text" placeholder="size2">
                                                 </div>
                                             </div>
                                             <div class="span2">
-                                                <div class="input-control text span2" data-role="input-control">
-                                                    <input type="text" placeholder="span2">
+                                                <div class="input-control text size2" data-role="input-control">
+                                                    <input type="text" placeholder="size2">
                                                 </div>
                                             </div>
                                             <div class="span2">
-                                                <div class="input-control text span2" data-role="input-control">
-                                                    <input type="text" placeholder="span2">
+                                                <div class="input-control text size2" data-role="input-control">
+                                                    <input type="text" placeholder="size2">
                                                 </div>
                                             </div>
                                         </div>
@@ -451,7 +452,7 @@
                                 </form>
                             </div>
 <pre class="prettyprint linenums">
-&lt;div class="input-control text span2"&gt;
+&lt;div class="input-control text size2"&gt;
     &lt;input type="text" /&gt;
 &lt;/div&gt;
 </pre>
@@ -463,6 +464,7 @@
                             </p>
                             <div class="example">
                                 <form>
+                                    <h3>Inputs</h3>
                                     <div class="input-control text warning-state" data-role="input-control">
                                         <input type="text" value="warning state">
                                     </div>
@@ -477,6 +479,24 @@
 
                                     <div class="input-control text" data-role="input-control">
                                         <input type="text" value="success state" data-state="success">
+                                    </div>
+
+                                    <h3>Select, file, textarea</h3>
+                                    <div class="input-control select error-state" data-role="input-control">
+                                        <select name="s1">
+                                            <option value="1">Value 1</option>
+                                            <option value="2">Value 2</option>
+                                            <option value="3">Value 3</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-control file info-state" data-role="input-control">
+                                        <input type="file">
+                                        <button class="btn-file"></button>
+                                    </div>
+
+                                    <div class="input-control textarea success-state" data-role="input-control">
+                                        <textarea></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -594,14 +614,6 @@ to:
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <div class="page-footer-content">
-                <!--<div data-load="header.html"></div>-->
-            </div>
-        </div>
     </div>
 
     <script src="js/hitua.js"></script>

@@ -1,114 +1,120 @@
 (function($) {
-    var _notifies = [];
-
-    $.Notify = function(params) {
-
-        //$.Notify.settings = params;
-
-        params = $.extend({
-            icon: '',
-            caption: '',
-            content: '',
-            shadow: true,
-            width: 'auto',
-            height: 'auto',
-            style: false, // {background: '', color: ''}
-            position: 'top-right', //default: bottom-right, top-right, top-left, bottom-left
-            timeout: 3000
-        }, params);
-
-        if (params.content == '' || params.content == undefined) return;
-
-        var _wrapper, _notify;
-
-        _wrapper = $("<div/>").addClass("metro notify-wrapper");
-        _notify = $("<div/>").addClass("notify");
-
-        if (params.shadow) _wrapper.addClass("shadow");
-        if (params.style && params.style.background != undefined) _wrapper.css("background-color", params.style.background);
-        if (params.style && params.style.color != undefined) _wrapper.css("color", params.style.color);
-
-        // add title
-        if (params.caption != '' && params.caption != undefined) {
-            $("<div/>").addClass("caption").html(params.caption).appendTo(_notify);
-        }
-        // add content
-        if (params.content != '' && params.content != undefined) {
-            $("<div/>").addClass("content").html(params.content).appendTo(_notify);
-        }
-        _notify.appendTo(_wrapper);
-
-        if (params.width != 'auto') _wrapper.css('min-width', params.width);
-        if (params.height != 'auto') _wrapper.css('min-height', params.width);
-
-        _wrapper.hide().appendTo('body').fadeIn('fast');
-        _notifies.push( _notify );
-
-        if (params.position == 'default' || params.position == 'bottom-right') {
-            var bottom_position = 5;
-            $.each(_notifies, function(i, n){
-                if (i == _notifies.length-1) return;
-                bottom_position += n.parent('.notify-wrapper').outerHeight()+5;
-            });
-            _wrapper.css({
-                bottom: bottom_position,
-                right: 5
-            });
-        } else if (params.position == 'top-right') {
-            var top_position = 5;
-            $.each(_notifies, function(i, n){
-                if (i == _notifies.length-1) return;
-                top_position += n.parent('.notify-wrapper').outerHeight()+5;
-            });
-            _wrapper.css({
-                top: top_position,
-                right: 5
-            });
-        } else if (params.position == 'bottom-left') {
-            var bottom_position = 5;
-            $.each(_notifies, function(i, n){
-                if (i == _notifies.length-1) return;
-                bottom_position += n.parent('.notify-wrapper').outerHeight()+5;
-            });
-            _wrapper.css({
-                bottom: bottom_position,
-                left: 5
-            });
-        } else {
-            var top_position = 5;
-            $.each(_notifies, function(i, n){
-                if (i == _notifies.length-1) return;
-                top_position += n.parent('.notify-wrapper').outerHeight()+5;
-            });
-            _wrapper.css({
-                top: top_position,
-                left: 5
-            });
-        }
-
-        setTimeout(function(){
-            $.Notify.close(_notify);
-        }, params.timeout);
+	var _notify_container = false;
+	var _notifies = [];
+	
+	var Notify = {
+		
+		_container: null,
+		_notify: null,
+		_timer: null,
+		options: {
+			icon: '', // to be implemented
+			caption: '',
+			content: '',
+			shadow: true,
+			width: 'auto',
+			height: 'auto',
+			style: false, // {background: '', color: ''}
+			position: 'right', //right, left
+			timeout: 3000
+		},
+		
+		init: function(options) {
+			this.options = $.extend({}, this.options, options);
+			this._build();
+			return this;
+		},
+		
+		_build: function() {
+			this._container = _notify_container || $("<div/>").addClass("metro notify-container").appendTo('body');
+			_notify_container = this._container;
+			var o = this.options;
+			
+			if (o.content == '' || o.content == undefined) return false;
+			
+			this._notify = $("<div/>").addClass("notify");
+			
+			if (o.shadow) this._notify.addClass("shadow");
+       		if (o.style && o.style.background != undefined) this._notify.css("background-color", o.style.background);
+        	if (o.style && o.style.color != undefined) this._notify.css("color", o.style.color);
+			
+			// add title
+   	    	if (o.caption != '' && o.caption != undefined) {
+   	    	    $("<div/>").addClass("caption").html(o.caption).appendTo(this._notify);
+   	    	}
+   	    	// add content
+   	    	if (o.content != '' && o.content != undefined) {
+   	    	    $("<div/>").addClass("content").html(o.content).appendTo(this._notify);
+   	    	}
+			
+			if (o.width != 'auto') this._notify.css('min-width', o.width);
+	        if (o.height != 'auto') this._notify.css('min-height', o.height);
+			
+			this._notify.hide().appendTo(this._container).fadeIn('slow');
+        	_notifies.push(this._notify);
+			
+			this.close(o.timeout);
+			
+		},
+		
+		close: function(timeout) {
+			this.clear();
+			if(timeout == parseInt(timeout)) {
+				var self = this
+				this._timer = setTimeout(function() {
+					self._timer = null;
+					self._hide();
+				}, timeout);
+				return this;
+			} else if(timeout == undefined) {
+				return this._hide();
+			}
+			return this;
+		},
+		
+		clear: function() {
+			if(this._timer != null) {
+				clearTimeout(this._timer);
+				this._timer = null;
+				return this;
+			} else {
+				return false;
+			}
+		},
+		
+		_hide: function() {
+			this.clear();
+		
+			if(this._notify != undefined) {
+        	   	this._notify.hide('slow', function() {
+					this.remove();
+					_notifies.splice(_notifies.indexOf(this._notify), 1);
+				});
+				return this;
+			} else {
+				return false;
+			}
+		},
+		
+		closeAll: function() {
+			_notifies.forEach(function(notEntry) {
+				notEntry.hide('slow', function() {
+					notEntry.remove();
+					_notifies.splice(_notifies.indexOf(notEntry), 1);
+				});
+			});
+			return this;
+		}
+	};
+	
+	$.Notify = function(options) {
+		return Object.create(Notify).init(options);
+	}
+	$.Notify.show = function(message, title) {
+		return $.Notify({
+       	    content: message,
+       	    caption: title
+       	});
     };
-
-    $.Notify.show = function(message, title){
-        $.Notify({
-            content: message,
-            caption: title
-        });
-    };
-
-    $.Notify.close = function(_notify) {
-        if(_notify == undefined) {
-            return false;
-        }
-
-        var _wrapper = _notify.parent(".notify-wrapper");
-        _wrapper.fadeOut(function(){
-            $(this).remove();
-            _notifies.splice(_notifies.indexOf(_notify), 1);
-        });
-
-        return true;
-    };
+	
 })(jQuery);

@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="product" content="Metro UI CSS Framework">
     <meta name="description" content="Simple responsive css framework">
     <meta name="author" content="Sergey S. Pimenov, Ukraine, Kiev">
 
     <link href="css/metro-bootstrap.css" rel="stylesheet">
     <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/iconFont.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/prettify/prettify.css" rel="stylesheet">
 
@@ -18,7 +20,7 @@
     <script src="js/prettify/prettify.js"></script>
 
     <!-- Metro UI CSS JavaScript plugins -->
-    <script src="js/metro/metro-loader.js"></script>
+    <script src="js/load-metro.js"></script>
 
     <!-- Local JavaScript -->
     <script src="js/docs.js"></script>
@@ -28,9 +30,7 @@
 </head>
 <body class="metro">
     <header class="bg-dark" data-load="header.html"></header>
-    <div class="page">
-        <div class="page-region">
-            <div class="page-region-content">
+    <div class="container">
                 <h1>
                     <a href="/"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
                     Slider<small class="on-right">component</small>
@@ -123,6 +123,21 @@
                         <td class="text-bold">data-show-hint</td>
                         <td>show or hide hint for value of marker position</td>
                     </tr>
+                    <tr>
+                        <td class="text-bold">min</td>
+                        <td class="text-bold">data-min</td>
+                        <td>Set the minimum value for the slider.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">max</td>
+                        <td class="text-bold">data-max</td>
+                        <td>Set the maximum value for the slider.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">animate</td>
+                        <td class="text-bold">data-animate</td>
+                        <td>Animate slider movements for fluent movements.</td>
+                    </tr>
                 </table>
 
                 <p>
@@ -133,21 +148,16 @@
 </pre>
 <pre class="prettyprint linenums">
 $(function(){
-    $("#slider").slider({
+    var slider = $("#slider").slider({
         position: 10,
         accuracy: 1
     });
 });
+
+// Short method to set position
+slider.slider('value', 15);
 </pre>
                 <p>This component required <code>metro-slider.js</code></p>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <div class="page-footer-content">
-                <!--<div data-load="header.html"></div>-->
-            </div>
-        </div>
     </div>
 
     <script src="js/hitua.js"></script>

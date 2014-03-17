@@ -183,7 +183,7 @@
     & > li > a.dropdown-toggle {
 
         &:after {
-            font-family: iconFont;
+            font-family: @sysIconFontName;
             font-size: .8em;
             content: "\e156";
             left: 85%;
@@ -208,12 +208,17 @@
     background: @white;
     min-width: 220px;
     width: auto;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid @menuBorder;
+    //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+    &.shadow {
+        box-shadow: 3px 3px 0 @menuShadowA;
+    }
 
     li {
         margin: 5px 0 0;
         width: 100%;
+        border: 1px transparent solid;
 
         &:last-child {
             margin-bottom: @subunitSize;
@@ -240,22 +245,29 @@
     }
 
     li:hover {
-        background: @cyan;
-        color: @white;
+        background: @menuItemHoverBackground;
+        border-color: @menuItemHoverBorder;
+        //color: @white;
     }
 
-    li.checked a, li.checked-partial a {
+    li.checked a, li.checked-partial a, li.unchecked a {
         &:before {
+            font-family: @sysIconFontName;
             position: absolute;
             left: 10px;
-            content: "\e0a6";
-            font-family: iconFont;
+            content: "\e004";
         }
     }
 
     li.checked-partial a {
         &:before {
-            content: "\e0a8";
+            content: "\e005";
+        }
+    }
+	
+	li.unchecked a {
+        &:before {
+            content: "\e005";
         }
     }
 
@@ -270,6 +282,7 @@
         margin: 9px 1px;
         overflow: hidden;
         background-color: #e5e5e5;
+        border-width: 0;
         &:hover {
             background: #e5e5e5;
         }
@@ -291,12 +304,13 @@
     & > li > a.dropdown-toggle {
 
         &:after {
-            font-family: iconFont;
+            font-family: @sysIconFontName;
             font-size: .7em;
-            content: "\e1b3";
-            left: 85%;
-            top: .85em;
-            .rotate(0deg);
+            content: "\e001";
+            left: 90%;
+            top: 50%;
+            margin-top: -1.4em;
+            .rotate(-90deg);
         }
     }
 
@@ -308,6 +322,110 @@
         top: auto;
         bottom: 0;
     }
+
+    .menu-title {
+        background-color: @menuItemTitleBackground;
+        font-size: 12px;
+        //font-weight: bold;
+        line-height: 14px;
+        padding: 4px 8px;
+        border: 0;
+        border-bottom: 1px @menuBorder solid;
+        border-top: 1px @menuBorder solid;
+        color: #646464;
+        &:first-child {
+            margin: 0;
+            border-top-width: 0;
+            &:hover {
+                border-top-width: 0;
+            }
+        }
+        &:hover {
+            background-color: @menuItemTitleBackground;
+            cursor: default;
+            border: 0;
+            border-bottom: 1px @menuBorder solid;
+            border-top: 1px @menuBorder solid;
+        }
+    }
+
+    &.inverse {
+        border: 2px #3b3b3b solid;
+
+        li {
+            border: 0;
+            a {
+                padding: 9px 32px !important;
+            }
+        }
+
+        li:hover {
+            border: 0;
+            background-color: #e5e5e5;
+        }
+
+        .menu-title {
+            &:hover {
+                background-color: @menuItemTitleBackground;
+            }
+        }
+
+        .divider {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    &.dark {
+        background-color: @grayDark;
+        border: 2px @grayDark solid;
+        color: @white;
+
+        &.opacity {
+            background-color: rgba(61,61,61,.9);
+        }
+
+        li {
+            border: 0;
+            color: inherit;
+            a {
+                padding: 9px 32px !important;
+                color: inherit;
+            }
+            &.disabled, &.disabled:hover {
+                cursor: default !important;
+                background: transparent !important;
+                color: @gray;
+                a {
+                    color: inherit;
+                    cursor: inherit;
+                    background: inherit;
+                }
+            }
+        }
+
+        li:hover {
+            border: 0;
+            background-color: saturate(@dark, 10%);
+            color: @white;
+        }
+
+        .menu-title {
+            background-color: #3b3b3b;
+            &:hover {
+                background-color: #3b3b3b;
+            }
+        }
+
+        .divider {
+            margin-left: 0;
+            margin-right: 0;
+            background-color: @gray;
+            &:hover {
+                background: @gray;
+            }
+        }
+    }
 }
 
 .dropdown-toggle {
@@ -315,8 +433,9 @@
         position: absolute;
         margin-left: .45em;
         bottom: 0;
-        content: '\203A';
-        .rotate(90deg);
+        font-family: @sysIconFontName;
+        font-size: .7em;
+        content: '\e001';
     }
 
     &.no-marker {

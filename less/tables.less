@@ -34,6 +34,10 @@ table {
         th {
             vertical-align: bottom;
         }
+
+        th, td {
+            border-bottom: 1px solid #111111;
+        }
     }
 
     tbody {
@@ -51,7 +55,9 @@ table {
     }
 
     tfoot {
-
+        th, td {
+            border-top: 1px solid #111111;
+        }
     }
 
     .table {
@@ -61,6 +67,18 @@ table {
     &.condensed {
         th, td {
             padding: 4px 5px;
+            .input-control {
+                margin: 0;
+            }
+        }
+    }
+
+    &.super-condensed {
+        th, td {
+            padding: 2px;
+            .input-control {
+                margin: 0;
+            }
         }
     }
 

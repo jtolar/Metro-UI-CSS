@@ -42,7 +42,6 @@ label {
         cursor: pointer;
         position: relative;
         margin-bottom: 7pt;
-
     }
 }
 
@@ -69,10 +68,16 @@ label {
             background-color: @white;
             border: 2px @inputRestState solid;
             padding: 0;
-            margin: 0;
+            margin: 0 5px 0 0;
             position: relative;
             display: inline-block;
             vertical-align: middle;
+        }
+
+        &.text-left {
+            .check {
+                margin: 0 0 0 5px;
+            }
         }
 
         &:hover {
@@ -89,14 +94,14 @@ label {
         }
 
         .check:after {
-            font-family: iconFont;
+            position: absolute;
+            font-family: @sysIconFontName;
             font-size: 9pt;
             line-height: 9pt;
         }
 
         input[type="checkbox"]:checked ~ .check:after, input[type="radio"]:checked ~ .check:after {
-            position: absolute;
-            content: "\e08a";
+            content: "\e003";
             margin: 2px;
             top: 0;
             color: @dark;
@@ -163,7 +168,7 @@ label {
         }
 
         .check {
-            background-color: transparent;
+            //background-color: transparent;
             position: relative;
             .size(18px, 45px);
             outline: 2px #a6a6a6 solid;
@@ -215,21 +220,19 @@ label {
 }
 
 .input-control {
-    &.text, &.password, &.file {
+    &.text, &.password, &.file, &.email, &.tel, &.number {
         display: inline-block;
         cursor: pointer;
         position: relative;
         background-color: #fff;
         outline: 0;
         height: 34px;
-        position: relative;
         width: 100%;
 
         .btn-clear, .btn-reveal, .btn-date, .btn-file, .btn-search {
             background-color: #F0F0F0;
             position: absolute;
             top: 5px;
-            right: 5px;
             z-index: 2;
             border: 0;
             right: 4px;
@@ -240,8 +243,8 @@ label {
             margin: 0;
             display: none;
             &:after {
-                font-family: iconFont;
-                font-size: 10pt;
+                font-family: @sysIconFontName;
+                font-size: 1em;
             }
             &:not(:disabled):active {
                 background-color: @dark;
@@ -264,11 +267,11 @@ label {
             display: block;
         }
 
-        .btn-clear:after {content: "\e089";}
-        .btn-reveal:after {content: "\e000";}
-        .btn-search:after {content: "\e041";}
-        .btn-date:after {content: "\e020";}
-        .btn-file:after {content: "\e012";}
+        .btn-clear:after {content: "\e00d";}
+        .btn-reveal:after {content: "\e007";}
+        .btn-search:after {content: "\e00e";}
+        .btn-date:after {content: "\e013";}
+        .btn-file:after {content: "\e008";}
         .btn-search {display: block;}
         .btn-date {display: block;}
         .btn-file {display: block;}
@@ -287,6 +290,7 @@ label {
             height: 100%;
             padding: 5px;
             z-index: 1;
+            -webkit-appearance: none;
             //padding-right: 30px;
             &:focus {
                 outline: 0;
@@ -301,7 +305,7 @@ label {
             display: none;
         }
 
-        input:-moz-placeholder {color: @placeHolderText;}
+        input::-moz-placeholder {color: @placeHolderText;}
         input::-webkit-input-placeholder {color: @placeHolderText;}
     }
 }
@@ -332,24 +336,24 @@ label {
 }
 
 .input-control {
-    &.text, &.password, &.select, &.textarea, &.file {
+    &.text, &.password, &.select, &.textarea, &.file, &.email, &.tel, &.number {
         &.warning-state {
-            input {
+            input, select, textarea {
                 border-color: @orange;
             }
         }
         &.error-state {
-            input {
+            input, select, textarea {
                 border-color: @red;
             }
         }
         &.info-state {
-            input {
+            input, select, textarea {
                 border-color: @lightBlue;
             }
         }
         &.success-state {
-            input {
+            input, select, textarea {
                 border-color: @green;
             }
         }
@@ -376,7 +380,7 @@ label {
 }
 
 .input-control {
-    &.text, &.password, &.select, &.textarea, &.file {
+    &.text, &.password, &.select, &.textarea, &.file, &.email, &.tel, &.number {
         &[class*="span"] {
             margin-left: 0;
         }
@@ -403,3 +407,8 @@ input[type="button"], input[type="submit"], input[type="reset"] {
     .button;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

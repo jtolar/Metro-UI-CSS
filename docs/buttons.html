@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="product" content="Metro UI CSS Framework">
     <meta name="description" content="Simple responsive css framework">
     <meta name="author" content="Sergey S. Pimenov, Ukraine, Kiev">
 
     <link href="css/metro-bootstrap.css" rel="stylesheet">
     <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/iconFont.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/prettify/prettify.css" rel="stylesheet">
 
@@ -19,7 +21,7 @@
     <script src="js/prettify/prettify.js"></script>
 
     <!-- Metro UI CSS JavaScript plugins -->
-    <script src="js/metro/metro-loader.js"></script>
+    <script src="js/load-metro.js"></script>
 
     <!-- Local JavaScript -->
     <script src="js/docs.js"></script>
@@ -30,9 +32,7 @@
 <body class="metro">
     <header class="bg-dark" data-load="header.html"></header>
 
-    <div class="page">
-        <div class="page-region">
-            <div class="page-region-content">
+    <div class="container">
                 <h1>
                     <a href="/"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
                     Buttons<small class="on-right">definition</small>
@@ -40,7 +40,7 @@
 
                 <div class="grid">
                     <div class="row">
-                        <div class="span3">
+                        <div class="span3 no-tablet-portrait">
                             <nav>
                                 <ul class="side-menu">
                                     <li><a href="#_push">Push button</a></li>
@@ -399,12 +399,12 @@
                             <div class="example">
                                 <div class="button-dropdown place-right">
                                     <button class="dropdown-toggle">Click Me</button>
-                                    <ul class="dropdown-menu place-right">
+                                    <ul class="dropdown-menu place-right" data-role="dropdown">
                                         <li><a href="#">Action</a></li>
                                         <li><a href="#">Another action</a></li>
                                         <li>
                                             <a class="dropdown-toggle" href="#">Something else here</a>
-                                            <ul class="dropdown-menu">
+                                            <ul class="dropdown-menu drop-left" data-role="dropdown">
                                                 <li><a href="#">Sublink 1</a></li>
                                                 <li><a href="#">Sublink 2</a></li>
                                                 <li><a href="#">Sublink 3</a></li>
@@ -420,12 +420,12 @@
                                 </div>
                                 <div class="button-dropdown">
                                     <button class="dropdown-toggle">Click Me</button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" data-role="dropdown">
                                         <li><a href="#">Action</a></li>
                                         <li><a href="#">Another action</a></li>
                                         <li>
                                             <a class="dropdown-toggle" href="#">Something else here</a>
-                                            <ul class="dropdown-menu">
+                                            <ul class="dropdown-menu" data-role="dropdown">
                                                 <li><a href="#">Sublink 1</a></li>
                                                 <li><a href="#">Sublink 2</a></li>
                                                 <li><a href="#">Sublink 3</a></li>
@@ -445,7 +445,7 @@
 <pre class="linenums prettyprint">
 &lt;div class="button-dropdown"&gt;
     &lt;button class="dropdown-toggle"&gt;Click Me&lt;/button&gt;
-    &lt;ul class="dropdown-menu"&gt;
+    &lt;ul class="dropdown-menu" data-role="dropdown"&gt;
         &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
@@ -725,14 +725,6 @@ $("#component_id").buttongroup().bind("buttongroupclick", function(event, btn, o
                     </div>
                 </div>
 
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <div class="page-footer-content">
-                <!--<div data-load="header.html"></div>-->
-            </div>
-        </div>
     </div>
 
     <script src="js/hitua.js"></script>

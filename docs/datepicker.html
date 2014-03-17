@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="product" content="Metro UI CSS Framework">
     <meta name="description" content="Simple responsive css framework">
     <meta name="author" content="Sergey S. Pimenov, Ukraine, Kiev">
 
     <link href="css/metro-bootstrap.css" rel="stylesheet">
     <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/iconFont.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/prettify/prettify.css" rel="stylesheet">
 
@@ -18,7 +20,10 @@
     <script src="js/prettify/prettify.js"></script>
 
     <!-- Metro UI CSS JavaScript plugins -->
-    <script src="js/metro/metro-loader.js"></script>
+    <script>
+        //METRO_LOCALE = 'en';
+    </script>
+    <script src="js/load-metro.js"></script>
 
     <!-- Local JavaScript -->
     <script src="js/docs.js"></script>
@@ -29,9 +34,7 @@
 <body class="metro">
     <header class="bg-dark" data-load="header.html"></header>
 
-    <div class="page">
-        <div class="page-region">
-            <div class="page-region-content">
+    <div class="container">
                 <h1>
                     <a href="/"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
                     DatePicker<small class="on-right">component</small>
@@ -39,20 +42,20 @@
 
 
                 <p>
-                    THis component required <code>metro-calendar.js</code> and <code>metro-datepicker.js</code>
+                    This component required <code>metro-calendar.js</code> and <code>metro-datepicker.js</code>
                 </p>
-                <div class="example">
+                <div class="example1">
 
-                    <div class="grid fluid">
+                    <div class="grid ">
                         <div class="row">
                             <div class="span3">
-                                <div class="input-control text" data-role="datepicker">
+                                <div class="input-control text" data-role="datepicker" data-week-start="1">
                                     <input type="text">
                                     <button class="btn-date"></button>
                                 </div>
                             </div>
                             <div class="span3">
-                                <div class="input-control text" data-role="datepicker" data-date="2013-11-13" data-effect="slide">
+                                <div class="input-control text" data-role="datepicker" data-date="2013-11-13" data-effect="slide" data-other-days="1">
                                     <input type="text">
                                     <button class="btn-date"></button>
                                 </div>
@@ -77,7 +80,13 @@
                     Init with data-* API:
                 </p>
 <pre class="prettyprint linenums">
-&lt;div class="input-control text" data-role="datepicker"&gt;
+&lt;div class="input-control text" data-role="datepicker"
+    data-date='set the initial date'
+    data-format='format output'
+    data-effect='slide | fade | none'
+    data-locale='en | fr | ua | ru'
+    data-week-start='0 | 1'
+    data-other-days='0 | 1'&gt;
     &lt;input type="text"&gt;
     &lt;button class="btn-date"&gt;&lt;/button&gt;
 &lt;/div&gt;
@@ -114,18 +123,12 @@
         date: "2013-01-01", // set init date
         format: "d/m/y", // set output format
         effect: "none", // none, slide, fade
-        position: "bottom", // top or bottom
+        position: "bottom", // top or bottom,
+        locale: ''en, // 'ru' or 'en', default is $.Metro.currentLocale
     });
 &lt;/script&gt;
 </pre>
-            </div>
-        </div>
 
-        <div class="page-footer">
-            <div class="page-footer-content">
-                <!--<div data-load="header.html"></div>-->
-            </div>
-        </div>
     </div>
 
     <script src="js/hitua.js"></script>

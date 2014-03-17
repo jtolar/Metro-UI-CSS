@@ -2,6 +2,7 @@
 <html  lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <meta name="product" content="Metro UI CSS Framework">
     <meta name="description" content="Simple responsive css framework">
@@ -9,6 +10,7 @@
 
     <link href="css/metro-bootstrap.css" rel="stylesheet">
     <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/iconFont.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/prettify/prettify.css" rel="stylesheet">
 
@@ -19,33 +21,36 @@
     <script src="js/prettify/prettify.js"></script>
 
     <!-- Metro UI CSS JavaScript plugins -->
-    <script src="js/metro/metro-loader.js"></script>
+    <script src="js/load-metro.js"></script>
 
     <!-- Local JavaScript -->
     <script src="js/docs.js"></script>
     <script src="js/github.info.js"></script>
+
+    <script>
+        METRO_LOCALE = 'en';
+        METRO_WEEK_START = 1;
+    </script>
 
     <title>Metro UI CSS : Metro Bootstrap CSS Library</title>
 </head>
 <body class="metro">
     <header class="bg-dark" data-load="header.html"></header>
 
-    <div class="page">
-        <div class="page-region">
-            <div class="page-region-content">
+    <div class="container">
                 <h1>
                     <a href="/"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
                     Calendar<small class="on-right">component</small>
                 </h1>
 
                 <p>
-                    This component required <code>metro-calendar.js</code>.
+                    This component required: <code>metro-global.js</code>, <code>metro-locale.js</code> and <code>metro-calendar.js</code>.
                 </p>
 
-                <div class="example">
-                    <div class="grid fluid">
+                <div class="example1">
+                    <div class="grid">
                         <div class="row">
-                            <div class="span4"><div class="calendar small" data-role="calendar"></div></div>
+                            <div class="span4"><div class="calendar small" data-role="calendar" ></div></div>
                             <div class="span4"><div class="calendar small" data-role="calendar" data-start-mode="month"></div></div>
                             <div class="span4"><div class="calendar small" data-role="calendar" data-start-mode="year"></div></div>
                         </div>
@@ -64,7 +69,7 @@
                 </p>
                 <h4>Auto</h4>
 <pre class="prettyprint linenums">
-&lt;div class="calendar" data-role="calendar"&gt;&lt;/div&gt;
+&lt;div class="calendar" data-role="calendar" data-locale='en | ru'&gt;&lt;/div&gt;
 </pre>
                 <h4>Manually</h4>
 <pre class="prettyprint linenums">
@@ -78,15 +83,16 @@ $("component_id").calendar({
     multiSelect: boolean, //default true (multi select date)
     startMode: 'day', //year, month, day
     date: string, //the init calendar date (example: '2013-01-01' or '2012-01')
-    months: array, // array of month names from Jan to Dec
-    weekDays: array, // array of week day names from Sun to Sat
+    locale: 'en', // 'ru', 'ua', 'fr' or 'en', default is $.Metro.currentLocale
+    otherDays: false, // show days for previous and next months,
+    weekStart: 0, //start week from sunday - 0 or monday - 1
     getDates: function(d){...}, // see example below
     click: function(d){...}, // fired when user clicked on day, in "d" stored date
 });
 </pre>
 
                 <h3>Events &amp; Methods</h3>
-                <div class="example">
+                <div class="example1">
                     <div class="grid">
                         <div class="row">
                             <div class="span4">
@@ -155,15 +161,44 @@ $(function(){
     cal.calendar('unsetDate', '2013-07-2');
 })
 </pre>
+                <h3>Start from Monday, display other days</h3>
+                <div class="example1">
+                    <div class="grid ">
+                        <div class="row">
+                            <div class="span4"><h2>Start from Monday</h2><div class="calendar small" data-role="calendar" data-locale="en" data-week-start="1"></div></div>
+                            <div class="span4"><h2>Show other days</h2><div class="calendar small" data-role="calendar" data-locale="en" data-other-days="1"></div></div>
+                        </div>
+                    </div>
+                </div>
+<pre class="prettyprint linenums">
+&lt;div class="calendar small" data-role="calendar" data-week-start="1"&gt;&lt;/div&gt;
+&lt;div class="calendar small" data-role="calendar" data-other-days="1"&gt;&lt;/div&gt;
+</pre>
 
-            </div>
-        </div>
+                <h3>Languages</h3>
+                <div class="example1">
+                    <div class="grid ">
+                        <div class="row">
+                            <div class="span4"><h2>EN</h2><div class="calendar small" data-role="calendar" data-locale="en"></div></div>
+                            <div class="span4"><h2>FR</h2><div class="calendar small" data-role="calendar" data-locale="fr"></div></div>
+                            <div class="span4"><h2>UA</h2><div class="calendar small" data-role="calendar" data-locale="ua"></div></div>
+                        </div>
+                        <div class="row">
+                            <div class="span4"><h2>RU</h2><div class="calendar small" data-role="calendar" data-locale="ru"></div></div>
+                            <div class="span4"><h2>zhCN</h2><div class="calendar small" data-role="calendar" data-locale="zhCN"></div></div>
+                            <div class="span4"><h2>IT</h2><div class="calendar small" data-role="calendar" data-locale="it"></div></div>
+                        </div>
+                    </div>
+                </div>
+<pre class="prettyprint linenums">
+&lt;div class="calendar small" data-role="calendar" data-locale="en"&gt;&lt;/div&gt;
+&lt;div class="calendar small" data-role="calendar" data-locale="fr"&gt;&lt;/div&gt;
+&lt;div class="calendar small" data-role="calendar" data-locale="ua"&gt;&lt;/div&gt;
+&lt;div class="calendar small" data-role="calendar" data-locale="ru"&gt;&lt;/div&gt;
+&lt;div class="calendar small" data-role="calendar" data-locale="zhCN"&gt;&lt;/div&gt;
+</pre>
 
-        <div class="page-footer">
-            <div class="page-footer-content">
-                <!--<div data-load="header.html"></div>-->
-            </div>
-        </div>
+
     </div>
 
     <script src="js/hitua.js"></script>

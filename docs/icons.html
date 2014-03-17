@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="product" content="Metro UI CSS Framework">
     <meta name="description" content="Simple responsive css framework">
     <meta name="author" content="Sergey S. Pimenov, Ukraine, Kiev">
 
     <link href="css/metro-bootstrap.css" rel="stylesheet">
     <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/iconFont.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/prettify/prettify.css" rel="stylesheet">
 
@@ -18,18 +20,17 @@
     <script src="js/prettify/prettify.js"></script>
 
     <!-- Metro UI CSS JavaScript plugins -->
-    <script src="js/metro/metro-loader.js"></script>
+    <script src="js/load-metro.js"></script>
 
     <!-- Local JavaScript -->
     <script src="js/docs.js"></script>
+    <script src="js/github.info.js"></script>
 
     <title>Metro UI CSS : Metro Bootstrap CSS Library</title>
 </head>
 <body class="metro">
     <header class="bg-dark" data-load="header.html"></header>
-    <div class="page">
-        <div class="page-region">
-            <div class="page-region-content">
+    <div class="container">
                 <h1>
                     <a href="/"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
                     Icons<small class="on-right">font</small>
@@ -37,6 +38,15 @@
 
                 <p class="description">
                     Metro UI CSS includes more then 300 icons in one font that can instantly be customized — size, color, drop shadow, and anything that can be done with the power of CSS.
+                </p>
+                <p>
+                    To use icon font you must include same styles to page as:
+                </p>
+<pre class="prettyprint linenums">
+&lt;link href="iconFont.css" rel="stylesheet"&gt;
+</pre>
+                <p class="padding10 tertiary-text bg-grayLighter">
+                    Also you can use your own icons, for example <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>
                 </p>
 
                 <p class="description">
@@ -89,7 +99,11 @@ icon&lt;i class="icon-rocket fg-red on-right on-left"&gt;&lt;/i&gt;rocket
                     <h3>icon<i class="icon-rocket on-left on-right" style="background: red; color: white; padding: 10px; border-radius: 50%"></i>rocket</h3>
                 </div>
 <pre class="prettyprint linenums">
-icon&lt;i class="icon-rocket on-right on-left" style="background: red; color: white; padding: 10px; border-radius: 50%"&gt;&lt;/i&gt;rocket
+icon&lt;i class="icon-rocket on-right on-left"
+    style="background: red;
+           color: white;
+           padding: 10px;
+           border-radius: 50%"&gt;&lt;/i&gt;rocket
 </pre>
 
                 <h2>Icons</h2>
@@ -567,14 +581,6 @@ icon&lt;i class="icon-rocket on-right on-left" style="background: red; color: wh
                     <br />License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/us/
                 </div>
 
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <div class="page-footer-content">
-                <!--<div data-load="header.html"></div>-->
-            </div>
-        </div>
     </div>
 
     <script src="js/hitua.js"></script>

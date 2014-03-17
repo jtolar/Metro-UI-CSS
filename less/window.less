@@ -1,4 +1,4 @@
-.window-overlay {
+&.window-overlay {
     position: fixed;
     left: 0;
     top: 0;
@@ -221,37 +221,5 @@
             //border-top-width: 0;
             padding-top: 38px;
         }
-    }
-}
-
-.notify-wrapper {
-    position: fixed;
-    background-color: @dark;
-    width: auto;
-    height: auto;
-    min-width: 250px;
-    color: @white;
-
-    .notify {
-        display: block;
-        width: 100%;
-        #font > .segoe;
-        color: inherit;
-        padding: 20px;
-
-        .caption {
-            font-size: 18px;
-            line-height: 20px;
-            margin-bottom: 5px;
-        }
-        .content {
-            font-size: 14px;
-            line-height: 16px;
-        }
-    }
-
-    &.light {
-        background-color: @white;
-        color: @dark;
     }
 }

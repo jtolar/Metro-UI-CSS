@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="product" content="Metro UI CSS Framework">
     <meta name="description" content="Simple responsive css framework">
     <meta name="author" content="Sergey S. Pimenov, Ukraine, Kiev">
 
     <link href="css/metro-bootstrap.css" rel="stylesheet">
     <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/iconFont.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/prettify/prettify.css" rel="stylesheet">
 
@@ -18,7 +20,7 @@
     <script src="js/prettify/prettify.js"></script>
 
     <!-- Metro UI CSS JavaScript plugins -->
-    <script src="js/metro/metro-loader.js"></script>
+    <script src="js/load-metro.js"></script>
 
     <!-- Local JavaScript -->
     <script src="js/docs.js"></script>
@@ -28,26 +30,31 @@
 </head>
 <body class="metro">
     <header class="bg-dark" data-load="header.html"></header>
-    <div class="page">
-        <div class="page-region">
-            <div class="page-region-content">
+    <div class="container">
                 <h1>
                     <a href="/"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
                     Sidebar<small class="on-right">component</small>
                 </h1>
 
+                <p class="description">
+                    Metro UI CSS provides <code>SideBar</code> component. This component is great to create side menu.
+                    For <strong>dropdown</strong> you must include <code>metro-dropdown.js</code>.
+                    See code below for definition details.
+                </p>
+
                 <div class="example">
                     <div class="grid fluid">
                         <div class="row">
-                            <div class="span3">
-                                <nav class="sidebar">
+                            <div class="span4">
+                                <h3>Dark style (default)</h3>
+                                <nav class="sidebar dark">
                                     <ul>
                                         <li class="title">Items Group 1</li>
                                         <li class="active"><a href="#"><i class="icon-home"></i>Dashboard</a></li>
                                         <li class="stick bg-red"><a href="#"><i class="icon-cog"></i>Layouts</a></li>
                                         <li class="stick bg-yellow">
                                             <a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>Sub menu</a>
-                                            <ul class="dropdown-menu">
+                                            <ul class="dropdown-menu" data-role="dropdown">
                                                 <li><a href="">Subitem 1</a></li>
                                                 <li><a href="">Subitem 2</a></li>
                                                 <li><a href="">Subitem 3</a></li>
@@ -65,7 +72,7 @@
                                         <li><a href="#">Other item 3</a></li>
                                         <li>
                                             <a class="dropdown-toggle" href="#">Sub menu 2</a>
-                                            <ul class="dropdown-menu">
+                                            <ul class="dropdown-menu" data-role="dropdown">
                                                 <li><a href="">Subitem 1</a></li>
                                                 <li><a href="">Subitem 2</a></li>
                                                 <li><a href="">Subitem 3</a></li>
@@ -74,24 +81,56 @@
                                     </ul>
                                 </nav>
                             </div>
-                            <div class="span9 bg-grayLighter padding20">
-                                <p>Metro UI CSS provides <code>SideBar</code> component. This component is great to create side menu.</p>
-                                <p>For <strong>dropdown</strong> you must include <code>metro-dropdown.js</code></p>
-                                <p>See code below for definition details.</p>
+                            <div class="span1"></div>
+                            <div class="span4">
+                                <h3>Light style</h3>
+                                <nav class="sidebar light">
+                                    <ul>
+                                        <li class="title">Items Group 1</li>
+                                        <li class="active"><a href="#"><i class="icon-home"></i>Dashboard</a></li>
+                                        <li class="stick bg-red"><a href="#"><i class="icon-cog"></i>Layouts</a></li>
+                                        <li class="stick bg-yellow">
+                                            <a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>Sub menu</a>
+                                            <ul class="dropdown-menu" data-role="dropdown">
+                                                <li><a href="">Subitem 1</a></li>
+                                                <li><a href="">Subitem 2</a></li>
+                                                <li><a href="">Subitem 3</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="">Subitem 4</a></li>
+                                                <li class="disabled"><a href="">Subitem 4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="stick bg-green"><a href="#">Thread item</a></li>
+                                        <li class="disabled"><a href="#">Disabled item</a></li>
+
+                                        <li class="title">Items Group 2</li>
+                                        <li><a href="#">Other Item 1</a></li>
+                                        <li><a href="#">Other item 2</a></li>
+                                        <li><a href="#">Other item 3</a></li>
+                                        <li>
+                                            <a class="dropdown-toggle" href="#">Sub menu 2</a>
+                                            <ul class="dropdown-menu" data-role="dropdown">
+                                                <li><a href="">Subitem 1</a></li>
+                                                <li><a href="">Subitem 2</a></li>
+                                                <li><a href="">Subitem 3</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
                 </div>
 
 <pre class="prettyprint linenums">
-&lt;nav class="sidebar"&gt;
+&lt;nav class="sidebar (light)"&gt;
     &lt;ul&gt;
         &lt;li class="title"&gt;Items Group 1&lt;/li&gt;
         &lt;li class="active"&gt;&lt;a href="#"&gt;&lt;i class="icon-home"&gt;&lt;/i&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
         &lt;li class="stick bg-red"&gt;&lt;a href="#"&gt;&lt;i class="icon-cog"&gt;&lt;/i&gt;Layouts&lt;/a&gt;&lt;/li&gt;
         &lt;li class="stick bg-yellow"&gt;
             &lt;a class="dropdown-toggle" href="#"&gt;&lt;i class="icon-tree-view"&gt;&lt;/i&gt;Sub menu&lt;/a&gt;
-            &lt;ul class="dropdown-menu"&gt;
+            &lt;ul class="dropdown-menu" data-role="dropdown"&gt;
                 &lt;li&gt;&lt;a href=""&gt;Subitem 1&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href=""&gt;Subitem 2&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href=""&gt;Subitem 3&lt;/a&gt;&lt;/li&gt;
@@ -109,7 +148,7 @@
         &lt;li&gt;&lt;a href="#"&gt;Other item 3&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;
             &lt;a class="dropdown-toggle" href="#"&gt;Sub menu 2&lt;/a&gt;
-            &lt;ul class="dropdown-menu"&gt;
+            &lt;ul class="dropdown-menu" data-role="dropdown"&gt;
                 &lt;li&gt;&lt;a href=""&gt;Subitem 1&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href=""&gt;Subitem 2&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href=""&gt;Subitem 3&lt;/a&gt;&lt;/li&gt;
@@ -118,14 +157,7 @@
     &lt;/ul&gt;
 &lt;/nav&gt;
 </pre>
-            </div>
-        </div>
 
-        <div class="page-footer">
-            <div class="page-footer-content">
-                <!--<div data-load="header.html"></div>-->
-            </div>
-        </div>
     </div>
 
     <script src="js/hitua.js"></script>

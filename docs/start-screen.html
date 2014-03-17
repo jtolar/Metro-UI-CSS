@@ -8,6 +8,7 @@
 
     <link href="css/metro-bootstrap.css" rel="stylesheet">
     <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/iconFont.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/prettify/prettify.css" rel="stylesheet">
 
@@ -18,7 +19,7 @@
     <script src="js/prettify/prettify.js"></script>
 
     <!-- Metro UI CSS JavaScript plugins -->
-    <script src="js/metro/metro-loader.js"></script>
+    <script src="js/load-metro.js"></script>
 
     <!-- Local JavaScript -->
     <script src="js/docs.js"></script>
@@ -43,7 +44,7 @@
 
         <div class="tile-group six">
 
-            <a class="tile double bg-lightBlue live" data-role="live-tile" data-effect="slideUp">
+            <a class="tile double bg-lightBlue live" data-role="live-tile" data-effect="slideUp" data-click="transform">
                 <div class="tile-content email">
                     <div class="email-image">
                         <img src="images/obama.jpg">
@@ -80,12 +81,8 @@
                 </div>
             </a> <!-- end tile -->
 
-            <a class="tile double bg-violet" style="overflow: visible">
-                <div class="tile-content" style="overflow: visible">
-                    <div class="input-control text span2 place-left margin10" style="margin-left: 10px" data-role="datepicker">
-                        <input type="text" name="sel_date">
-                        <button class="btn-date"></button>
-                    </div>
+            <a class="tile double bg-violet" data-click="transform">
+                <div class="tile-content">
                     <div class="text-right padding10 ntp">
                         <h1 class="fg-white no-margin">10</h1>
                         <p class="fg-white">Sunday</p>
@@ -96,7 +93,7 @@
                 </div>
             </a> <!-- end tile -->
 
-            <div class="tile">
+            <div class="tile" data-click="transform">
                 <div class="tile-content image">
                     <img src="images/clouds.jpg">
                 </div>
@@ -106,32 +103,32 @@
             </div> <!-- end tile -->
 
             <!-- small tiles -->
-            <a href="#" class="tile half bg-darkRed">
+            <a href="#" class="tile half bg-darkRed" data-click="transform">
                 <div class="tile-content icon">
                     <span class="icon-camera"></span>
                 </div>
             </a>
 
-            <a href="#" class="tile half bg-darkOrange">
+            <a href="#" class="tile half bg-darkOrange" data-click="transform">
                 <div class="tile-content icon">
                     <span class="icon-headphones"></span>
                 </div>
             </a>
 
-            <a href="#" class="tile half bg-green">
+            <a href="#" class="tile half bg-green" data-click="transform">
                 <div class="tile-content icon">
                     <span class="icon-steering-wheel"></span>
                 </div>
             </a>
 
-            <a href="#" class="tile half bg-darkPink">
+            <a href="#" class="tile half bg-darkPink" data-click="transform">
                 <div class="tile-content icon">
                     <span class="icon-pictures"></span>
                 </div>
             </a>
             <!-- end small tiles -->
 
-            <a class="tile double double-vertical bg-steel">
+            <a class="tile double double-vertical bg-steel" data-click="transform">
                 <div class="tile-content" style="background: url(images/clouds2.png)">
                     <div class="padding10">
                         <h1 class="fg-white ntm">57&deg;</h1>
@@ -149,7 +146,7 @@
                 </div>
             </a> <!-- end tile -->
 
-            <div class="tile double">
+            <div class="tile double" data-click="transform">
                 <div class="tile-content image-set">
                     <img src="images/jeki_chan.jpg">
                     <img src="images/jek_vorobey.jpg">
@@ -159,7 +156,7 @@
                 </div>
             </div> <!-- end tile -->
 
-            <a href="#" class="tile bg-lightBlue">
+            <a href="#" class="tile bg-lightBlue" data-click="transform">
                 <div class="tile-content icon">
                     <span class="icon-IE"></span>
                 </div>
@@ -168,7 +165,7 @@
                 </div>
             </a>
 
-            <a href="#" class="tile bg-darkOrange">
+            <a href="#" class="tile bg-darkOrange" data-click="transform">
                 <div class="tile-content icon">
                     <span class="icon-help"></span>
                 </div>
@@ -177,7 +174,7 @@
                 </div>
             </a>
 
-            <a class="tile double bg-lightBlue">
+            <a class="tile double bg-lightBlue" data-click="transform">
                 <div class="tile-content image">
                     <img src="images/windows_8_default_13_wallpaper.jpg">
                 </div>
@@ -186,7 +183,7 @@
                 </div>
             </a>
 
-            <a class="tile double bg-darkGreen">
+            <a class="tile double bg-darkGreen" data-click="transform">
                 <div class="tile-content icon">
                     <span class="icon-cart-2"></span>
                 </div>
@@ -196,34 +193,34 @@
             </a>
         </div> <!-- End group -->
 
-        <div class="tile-group">
+        <div class="tile-group one">
             <div class="tile-group-title">Office</div>
-            <a class="tile half bg-darkBlue">
+            <a class="tile half bg-darkBlue" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/word.png">
                 </div>
             </a>
-            <a class="tile half bg-darkGreen">
+            <a class="tile half bg-darkGreen" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/excel.png">
                 </div>
             </a>
-            <a class="tile half bg-darkPink">
+            <a class="tile half bg-darkPink" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/onenote.png">
                 </div>
             </a>
-            <a class="tile half bg-orange">
+            <a class="tile half bg-orange" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/powerpoint.png">
                 </div>
             </a>
-            <a class="tile half bg-lightBlue">
+            <a class="tile half bg-lightBlue" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/outlook.png">
                 </div>
             </a>
-            <a class="tile half bg-darkRed">
+            <a class="tile half bg-darkRed" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/access.png">
                 </div>
@@ -232,7 +229,7 @@
 
         <div class="tile-group double">
             <div class="tile-group-title">Games</div>
-            <div class="tile bg-dark">
+            <div class="tile bg-dark" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/Crysis-2-icon.png">
                 </div>
@@ -240,7 +237,7 @@
                     <div class="label">Crysis 2</div>
                 </div>
             </div>
-            <div class="tile bg-dark">
+            <div class="tile bg-dark" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/Battlefield_4_Icon.png">
                 </div>
@@ -248,7 +245,7 @@
                     <div class="label">Battlefield 4</div>
                 </div>
             </div>
-            <div class="tile bg-dark">
+            <div class="tile bg-dark" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/D3.png">
                 </div>
@@ -256,7 +253,7 @@
                     <div class="label">Diablo III</div>
                 </div>
             </div>
-            <div class="tile bg-dark">
+            <div class="tile bg-dark" data-click="transform">
                 <div class="tile-content icon">
                     <img src="images/grid2.png">
                 </div>
@@ -267,7 +264,7 @@
         </div> <!-- End group -->
 
         <div class="tile-group double">
-            <div class="tile double">
+            <div class="tile double" data-click="transform">
                 <div class="tile-content image-set">
                     <img src="images/1.jpg">
                     <img src="images/2.jpg">
@@ -276,7 +273,7 @@
                     <img src="images/5.jpg">
                 </div>
             </div>
-            <div class="tile double live" data-role="live-tile" data-effect="slideUpDown">
+            <div class="tile double live" data-role="live-tile" data-effect="slideUpDown" data-click="transform">
                 <div class="tile-content image">
                     <img src="images/1.jpg">
                 </div>
@@ -298,8 +295,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
+</div>
     <script src="js/hitua.js"></script>
 
 </body>
